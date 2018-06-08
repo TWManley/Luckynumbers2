@@ -12,109 +12,79 @@ namespace LuckyNumbers2
 
 
         {
-
-            Console.WriteLine("Enter the low number in your range");
-            int num1 = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter the higher number in your range");
-            int num2 = int.Parse(Console.ReadLine());
-            int[] lotterynumbers = new int[6];
-
-
-
-
-            Console.WriteLine("Please choose your first number");
-            lotterynumbers[0] = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please choose your second number");
-            lotterynumbers[1] = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please choose your third number");
-            lotterynumbers[2] = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please choose your fourth number");
-            lotterynumbers[3] = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please choose your fifth number");
-            lotterynumbers[4] = int.Parse(Console.ReadLine());
-
-
-            Console.WriteLine("Please choose your sixth number");
-            lotterynumbers[5] = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("your numbers are {0}, {1},{2},{3},{4},{5}", lotterynumbers[0], lotterynumbers[1], lotterynumbers[2], lotterynumbers[3],
-               lotterynumbers[4], lotterynumbers[5]);
-
-            int[] Randnum = new int[6];
-            Random r = new Random();
-            for (int i = 0; i < Randnum.Length; i++)
+            string userResp = " ";
+            Console.WriteLine("would you like to play");
+            Console.WriteLine("please enter Yes to Play");
+            userResp = Console.ReadLine().ToLower();
+            while (userResp.Equals("yes"))
             {
-                Randnum[0] = r.Next(1, 100);
-                Randnum[1] = r.Next(1, 100);
-                Randnum[2] = r.Next(1, 100);
-                Randnum[3] = r.Next(1, 100);
-                Randnum[4] = r.Next(1, 100);
-                Randnum[5] = r.Next(1, 100);
-                Console.WriteLine("The winning numbers are {0}", Randnum[0], Randnum[1], Randnum[2],
-                    Randnum[3], Randnum[4], Randnum[5]);
-                if
-                    (Randnum[0] == lotterynumbers[0])
-
-                    Console.WriteLine("you win");
-                else
-                if
-                     (Randnum[0] != lotterynumbers[0])
-                    Console.WriteLine("You did not win"); 
-                ///I am still working on the Project I have had a hard weekend also this pc keeps rebooting.
 
 
+                int Jackpot = 100000;
+                int numMathces = 0;
+                Console.WriteLine("Please enter a starting number");
+                int minNumber = int.Parse(Console.ReadLine());
 
 
+                Console.WriteLine("Please enter an ending number");
+                int maxNumber = int.Parse(Console.ReadLine());
+
+                //Console.WriteLine(minNumber + " " + maxNumber);
+
+                int[] userNum = new int[6];
+
+                Console.WriteLine("Please enter six numbers");
+
+                for (int i = 0; i < userNum.Length; i++)
+
+                {
+                    int inputTest = int.Parse(Console.ReadLine());
+
+                    while (inputTest < minNumber || inputTest >= maxNumber)
+                    {
+                        Console.WriteLine("Please enter a value greater than {0} and less than the the {1}", minNumber, maxNumber);
+                        inputTest = int.Parse(Console.ReadLine());
 
 
+                    }
+                    userNum[i] = inputTest;
+                }
+                //Console.WriteLine(userNum[i]);
+                int[] ranArray = new int[6];
+                Random r = new Random();
+
+                for (int j = 0; j < ranArray.Length; j++)
+                {
+
+                    ranArray[j] = r.Next(minNumber, maxNumber);
+                    Console.WriteLine("Lucky Number:{0}", ranArray[j]);
 
 
+                }
+                Console.WriteLine("Jackpot ammount is {0} ", Jackpot);
+
+                for (int k = 0; k < userNum.Length; k++)
+                {
+                    for (int l = 0; l < ranArray.Length; l++)
+                    {
+                        if (userNum[k] == ranArray[1])
+                        {
+                            numMathces++;
+                            break;
 
 
+                        }
+                    }
+                }
+                Console.WriteLine("You guessed {0} numbers correctly", numMathces);
 
-
-
-
-
+                Console.WriteLine("You Won {0} dollars", Jackpot / numMathces);
+                Console.WriteLine("would you like to play again");
+                userResp = Console.ReadLine().ToLower();
 
             }
 
-            
-            
-
-            
-            
-
-
-
-
-
-
-
-
-
-
-            {
-                
-           
-                //lownumber = Console.ReadLine();
-
-            }
-              
-
-
-
-
-           //for (int i= 0; i <firstnumber.Length; i++)
-            {
-                //Console.WriteLine(i);
-
-            }
+        }
 
            
 
@@ -140,6 +110,6 @@ namespace LuckyNumbers2
 
 
 
-        }
+        
     }
 }
